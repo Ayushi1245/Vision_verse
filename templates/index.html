@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Virtual Painter</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #fceefc;
+            color: #444;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            position: relative;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("https://i.pinimg.com/736x/a1/e3/da/a1e3da65daa335ecab552d76d2843269.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        h1 {
+            color: #ff80ab;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            text-align: left;
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .button {
+            background-color: #ffb6c1;
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            font-size: 16px;
+            margin: 15px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #ff80ab;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Welcome to AI Virtual Painter!</h1>
+        <p><strong>How to use:</strong></p>
+        <ul>
+            <li>🖐️ Show all 5 fingers to <strong>clear the canvas</strong>.</li>
+            <li>✌️ Use index + middle finger to <strong>switch colors or eraser</strong>.</li>
+            <li>☝️ Use a single index finger to <strong>draw</strong>.</li>
+        </ul>
+
+        <button class="button" onclick="startPainter()">🎨 Start Painting</button>
+        <button class="button" onclick="stopPainter()">🛑 Stop Painting</button>
+    </div>
+
+    <script>
+        function startPainter() {
+            fetch('/start')
+                .then(res => res.text())
+                .then(alert)
+                .catch(err => alert("Error: " + err));
+        }
+
+        function stopPainter() {
+            fetch('/stop')
+                .then(res => res.text())
+                .then(alert)
+                .catch(err => alert("Error: " + err));
+        }
+
+        function exitPainter() {
+            fetch('/exit')
+                .then(res => res.text())
+                .then(alert)
+                .catch(err => alert("Error: " + err));
+        }
+    </script>
+</body>
+</html>
