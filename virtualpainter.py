@@ -21,7 +21,7 @@ if not os.path.exists(folderPath):
     print(f"❌ Folder {folderPath} not found!")
     exit(1)
 overlayList = []
-desired_order = ['2_Pink.png', '1_blue.png', '0_Green.png', '3_BLack.png', '4_Eraser.png']  # Map to pink, blue, green, black, eraser
+desired_order = ['2_Pink.png', '1_blue.png', '0_Green.png', '3_White.png', '4_Eraser.png']  # Map to pink, blue, green, black, eraser
 for filename in desired_order:
     img = cv2.imread(f'{folderPath}/{filename}')
     if img is None:
